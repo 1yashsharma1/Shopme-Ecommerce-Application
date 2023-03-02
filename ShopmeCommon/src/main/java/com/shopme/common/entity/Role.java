@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "roles")
@@ -18,7 +17,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
 public class Role {
 
     @Column
@@ -27,7 +25,6 @@ public class Role {
     private int id;
 
     @Column(length = 40, nullable = false, unique = true)
-    @ToString.Include
     private String name;
 
     @Column(length = 150, nullable = false)
@@ -38,4 +35,10 @@ public class Role {
 	this.name = name;
 	this.description = description;
     }
+
+    @Override
+    public String toString() {
+	return this.name;
+    }
+
 }
