@@ -59,4 +59,35 @@ public class UserRepositoryTests {
 	assertThat(usr.getId()).isNotNull();
     }
 
+    @Test
+    public void testUpdateUserDetails() {
+	User usr = repo.findById(1).get();
+	System.out.println(usr);
+	usr.setEnabled(true);
+	usr.setEmail("updatedemail@gmail.com");
+	User savedUsr = repo.save(usr);
+	System.out.println(savedUsr);
+    }
+
+    @Test
+    public void testUpdateUserRoles() {
+	User usr = repo.findById(1).get();
+	System.out.println(usr);
+	Role role1 = entityManager.find(Role.class, 1);
+	Role role5 = entityManager.find(Role.class, 5);
+	usr.getRoles().remove(role1);
+	usr.getRoles().add(role5);
+	User savedUsr = repo.save(usr);
+	System.out.println(savedUsr);
+    }
+
+    @Test
+    public void testDeleteUser() {
+
+	Integer userId = 3;
+	repo.findById(userId);
+	repo.deleteById(userId);
+
+    }
+
 }
