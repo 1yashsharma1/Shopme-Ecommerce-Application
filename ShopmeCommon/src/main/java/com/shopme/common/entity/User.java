@@ -50,6 +50,7 @@ public class User {
     @Column(length = 64)
     private String photos;
 
+    @ToString.Include
     private boolean enabled;
 
     @ManyToMany
