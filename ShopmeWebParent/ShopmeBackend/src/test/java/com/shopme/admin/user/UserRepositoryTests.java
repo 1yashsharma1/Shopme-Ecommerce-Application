@@ -90,4 +90,13 @@ public class UserRepositoryTests {
 
     }
 
+    @Test
+    public void getUserByEmail() {
+
+	String email = "updatedemail@gmail.com";
+	User usr = repo.getUserByEmail(email);
+	assertThat(email).isEqualTo(usr.getEmail());
+
+    }
+
 }
