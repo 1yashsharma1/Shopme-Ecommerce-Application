@@ -96,7 +96,14 @@ public class UserRepositoryTests {
 	String email = "updatedemail@gmail.com";
 	User usr = repo.getUserByEmail(email);
 	assertThat(email).isEqualTo(usr.getEmail());
+    }
 
+    @Test
+    public void testCountById() {
+
+	Integer id = 1;
+	Long countById = repo.countById(id);
+	assertThat(countById).isNotNull().isGreaterThan(0);
     }
 
 }
